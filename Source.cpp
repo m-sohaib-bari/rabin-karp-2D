@@ -147,7 +147,6 @@ int main() {
             hashCA_1[m - 1] += T[i + m][a] * modPow(26, c, 31);
             c--;
         }
-        //hashCA_1[m-1] %= 7;
         for (int a = 0; a < m; a++) {
             hashCAS_1[a] = hashCA_1[a];
         }
