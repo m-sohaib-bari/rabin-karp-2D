@@ -96,18 +96,16 @@ int main() {
                         hashCA_1[d] += T[a][b] * modPow(26, c, 31);
                         c--;
                     }
-                    //hashCA_1[d] %= 7;
                     hashCAS_1[d] = hashCA_1[d];
                     d++;
                 }
             }
-            else if (j != 0) { // rolling hash function
+            else if (j != 0) { // rolling hash function for changing columns within a row
                     int c = m - 1;
                     for (int a = 0; a < m; a++) {
                         hashCA_1[a] -= (T[i + a][j - 1] * modPow(26, c, 31));
                         hashCA_1[a] *= 26;
                         hashCA_1[a] += T[i + a][j - 1 + m];
-                        //hashCA_1[a] %= 7;
                     }
             }
             bool check = true;
@@ -139,6 +137,7 @@ int main() {
                 }
             }
         }
+        // following is the logic for rolling hash for when a row is changed
         for (int a = 0; a < m - 1; a++) {
             hashCA_1[a] = hashCAS_1[a + 1];
         }
